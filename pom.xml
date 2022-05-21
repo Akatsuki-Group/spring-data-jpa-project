@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.4</version>
+		<relativePath/> <!-- lookup parent from org.example.repository -->
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.example</groupId>
+	<artifactId>spring-data-jpa-project</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>spring-data-jpa-project</name>
+	<description>spring-data-jpa-project</description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>jpa-first-demo</module>
+		<module>jpa-mysql-demo</module>
+        <module>jpa-entity-demo</module>
+        <module>jpa-query-demo</module>
+        <module>jpa-repository-demo</module>
+        <module>jpa-jackson-demo</module>
+        <module>jpa-qbe-demo</module>
+        <module>jpa-specification-demo</module>
+        <module>jpa-entityManager-demo</module>
+        <module>jpa-auditing-demo</module>
+        <module>jpa-callback-demo</module>
+        <module>jpa-version-demo</module>
+        <module>jpa-mvc-demo</module>
+        <module>jpa-resolver-demo</module>
+        <module>jpa-datasource-demo</module>
+        <module>jpa-mult-datasource-demo</module>
+        <module>jpa-transaction-demo</module>
+        <module>jpa-PersistenceContext-demo</module>
+        <module>jpa-session-demo</module>
+        <module>jpa-lazy-demo</module>
+        <module>jpa-nsql-demo</module>
+        <module>jpa-completablefuture-demo</module>
+        <module>jpa-spel-demo</module>
+        <module>jpa-cache-demo</module>
+        <module>jpa-rest-demo</module>
+        <module>jpa-test-demo</module>
+        <module>jpa-elasticsearch-demo</module>
+    </modules>
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

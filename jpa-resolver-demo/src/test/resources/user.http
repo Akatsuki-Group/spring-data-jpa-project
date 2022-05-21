@@ -1,0 +1,88 @@
+POST http://127.0.0.1:8011/user
+Content-Type: application/json
+
+{
+  "age": 10,
+  "telephone": "132430",
+  "note": "sads"
+}
+
+###
+GET http://127.0.0.1:8011/user/17
+
+###
+GET http://127.0.0.1:8011/user?id=1
+
+###
+GET http://127.0.0.1:8011/users?size=2&page=0&ages=10&sort=id,desc
+
+###
+GET http://127.0.0.1:8011/users/sort?ages=10&sort=id,desc
+
+###
+POST http://localhost:8011/users/projected
+Content-Type: application/json
+
+{
+  "ages": 10,
+  "telephone": "123456789"
+}
+
+###
+GET http://127.0.0.1:8011/user/dsl?size=2&page=0&ages=10&sort=id%2Cdesc&ages=10
+Content-Type: application/json
+
+#### 通过post测试insert
+POST http://127.0.0.1:8011/user
+Content-Type: application/json
+
+{
+  "age": 10,
+  "name": "jack"
+}
+
+#### 还是发生post请求，带上ID和version执行update操作
+POST http://127.0.0.1:8011/user
+Content-Type: application/json
+
+{
+  "name": "jack1",
+  "id": 4,
+  "version": 0
+}
+
+#### insert
+POST http://127.0.0.1:8011/user/info
+Content-Type: application/json
+
+{
+  "ages": 10
+}
+
+#### update
+POST http://127.0.0.1:8011/user/info
+Content-Type: application/json
+
+{
+  "name": "jack1",
+  "ages": 10
+}
+
+###
+POST http://127.0.0.1:8011/user/notnull
+Content-Type: application/json
+
+{
+  "name": "jack1",
+  "version": 0,
+  "id": "4"
+}
+###
+GET http://127.0.0.1:8011/users?page[size]=2&page[number]=0&ages=10&sort=id,desc
+###
+GET http://127.0.0.1:8011/users?size=2&page=0&ages=10&sort=id,desc
+###
+GET http://127.0.0.1:8011/users/mypage?page[size]=2&page[number]=0&ages=10&sort=id,desc
+###
+GET http://127.0.0.1:8011/users/mypage?size=2&page=0&ages=10&sort=id,desc
+

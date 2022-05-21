@@ -1,0 +1,56 @@
+server:
+  port: 8011
+spring:
+  datasource:
+    hikari:
+      db1:
+        maxLifetime: 900000
+        maximumPoolSize: 8
+        pool-name: jpa-hikari-pool-db1
+      db2:
+        maxLifetime: 500000
+        maximumPoolSize: 6
+        pool-name: jpa-hikari-pool-db2
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        generate_statistics: true
+    show-sql: true
+    generate-ddl: true
+  datasource1:
+    url: jdbc:mysql://192.168.60.130:3306/test?logger=Slf4JLogger&profileSQL=true
+    username: root
+    password: 123456
+  datasource2:
+    url: jdbc:mysql://192.168.60.130:3306/test1?logger=Slf4JLogger&profileSQL=true
+    username: root
+    password: 123456
+  main:
+    allow-bean-definition-overriding: true
+
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
+        hikari.HikariConfig: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        engine:
+          internal:
+            StatisticalLoggingSessionEventListener: DEBUG
+          transaction:
+            internal:
+              TransactionImpl: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: TRACE
+        web: debug

@@ -1,0 +1,19 @@
+POST http://127.0.0.1:8011/api/v1/user
+Content-Type: application/json
+Cache-Control: no-cache
+
+{
+  "name": "jack",
+  "email": "123@126.com"
+}
+
+#######
+GET http://127.0.0.1:8011/api/v1/users?size=3&page=0
+
+###
+###
+GET http://localhost:8011/users
+
+###
+GET http://127.0.0.1:8011/rest/addresses/1
+

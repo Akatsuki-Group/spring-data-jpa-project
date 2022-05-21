@@ -1,0 +1,72 @@
+server:
+  port: 8011
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      autoCommit: true
+      connectionTestQuery: select 1 from dual
+      maxLifetime: 900000
+      maximumPoolSize: 8
+      minimumIdle: 8
+      pool-name: jpa-hikari-pool
+      connection-timeout: 30000
+      idle-timeout: 300000
+    url: jdbc:mysql://192.168.60.129:3306/test?logger=Slf4JLogger&profileSQL=true
+    username: root
+    password: 123456
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        generate_statistics: true
+    show-sql: false
+
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
+        hikari.HikariConfig: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        engine:
+          internal:
+            StatisticalLoggingSessionEventListener: DEBUG
+          transaction:
+            internal:
+              TransactionImpl: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: TRACE
+        web: debug
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    db:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true

@@ -1,0 +1,90 @@
+server:
+  port: 8011
+
+
+spring:
+  cache:
+    redis:
+      # 设置默认的过期时间是20分钟
+      time-to-live: 20m
+      cache-name-config:
+        # 设置我们刚才的例子 @Cacheable(value="userInfo")5分钟过期
+        userInfo: 5m
+        # 设置 room的cache1小时过期
+        room: 1h
+  datasource:
+    url: jdbc:mysql://192.168.61.130:3306/test
+    username: root
+    password: 123456
+  redis:
+    host: 192.168.61.130
+    port: 6379
+    password:
+    timeout: 60000
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  jpa:
+    properties:
+      hibernate:
+        connection:
+          handling_mode: DELAYED_ACQUISITION_AND_RELEASE_AFTER_TRANSACTION
+          #hibernate 二级缓存
+#        cache:
+#          use_second_level_cache: true
+#          region:
+#            factory_class: org.hibernate.cache.ehcache.internal.EhcacheRegionFactory
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      generate_statistics: true
+    open-in-view: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: trace
+    org:
+      springframework:
+        orm:
+          jpa:
+            JpaTransactionManager: trace
+      hibernate:
+        engine:
+          transaction:
+            internal: trace
+        internal: trace
+        stat: debug
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    db:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true

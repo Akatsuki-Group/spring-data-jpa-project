@@ -1,0 +1,64 @@
+server:
+  port: 8011
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.60.130:3306/test
+    username: root
+    password: 123456
+  data:
+    rest:
+      base-path: rest/
+    jpa:
+      repositories:
+        bootstrap-mode: default
+  jpa:
+    properties:
+      hibernate:
+        connection:
+          handling_mode: DELAYED_ACQUISITION_AND_RELEASE_AFTER_TRANSACTION
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      generate_statistics: true
+    open-in-view: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+logging:
+  level:
+    com.zaxxer.hikari: trace
+    org.springframework.web: trace
+    orm:
+      jpa:
+        JpaTransactionManager: trace
+    hibernate:
+      engine:
+        transaction:
+          internal: trace
+      internal: trace
+      stat: debug
+      type:
+        descriptor:
+          sql:
+            BasicBinder: trace
+management:
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    db:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
